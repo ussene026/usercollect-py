@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Todos Usuários {% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block body %}
+    <a href="{{ url_for('create_data') }}" class="btn btn-primary" style="margin-bottom: 1.3rem;">Cadastrar Usuários</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif%}
+    {% endwith %}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Email</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in data %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.contacto }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.endereco }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_data', id=usuario.id) }}" class="btn btn-warning">Actualizar</a>
+                        <a href="{{ url_for('delete', id=usuario.id) }}" class="btn btn-danger" onclick="return confirm('Deseja eliminar este usuário?')">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

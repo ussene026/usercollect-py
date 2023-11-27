@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Adicionar Usuário {% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block body %}
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Voltar</a>
+    <div class="card-body">
+        <form action="{{ url_for('create_data') }}" method="POST">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Nome</div>
+                    </div>
+                    <input type="text" id="nome" class="form-control" placeholder="Digite o seu nome" name="nome">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Contacto</div>
+                    </div>
+                    <input type="text" id="contacto" class="form-control" placeholder="Digite o seu contacto" name="contacto">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Email</div>
+                    </div>
+                    <input type="email" id="email" class="form-control" placeholder="Digite o seu endereço" name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Endereço</div>
+                    </div>
+                    <textarea name="endereco" id="endereco" class="form-control" placeholder="Digite o seu endereço" required="required" autocomplete="off"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-sm" name="submit">Cadastrar</button>
+                <button type="reset" class="btn btn-danger btn-sm">Cancelar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
